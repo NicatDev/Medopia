@@ -3,9 +3,9 @@ version: '3.8'
 services:
   web:
     build: .
-    command: gunicorn --workers 3 --bind 0.0.0.0:8000 myproject.wsgi:application
+    command: gunicorn --workers 3 --bind 0.0.0.0:8000 project.wsgi:application
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/Medopia
     ports:
       - "8000:8000"
 

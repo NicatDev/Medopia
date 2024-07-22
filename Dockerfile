@@ -1,6 +1,6 @@
 FROM Python 3.12.2
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/Medopia
 
 COPY requirements.txt ./
 
