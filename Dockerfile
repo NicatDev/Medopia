@@ -1,11 +1,13 @@
-FROM python:3.10.8-alpine
+FROM Python 3.12.2
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt ./
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
+EXPOSE 8000
+
+CMD ["gunicorn", "--workers", "3", "--bind", "0.0.0.0:8000", "myproject.wsgi:application"]
