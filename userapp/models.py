@@ -22,7 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     username = models.CharField(max_length=30, unique=False)
-    phone = models.CharField(max_length=15, validators=[validate_phone_number])
+    phone = models.CharField(max_length=15, validators=[validate_phone_number],null=True,blank=True)
     group = models.ForeignKey(Group, on_delete = models.CASCADE, blank=True, null=True, related_name='accounts_users',related_query_name='user',)
     timestamp = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
