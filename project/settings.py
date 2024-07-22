@@ -93,7 +93,7 @@ TEMPLATES = [
     },
 ]
 
-# WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 AUTH_USER_MODEL='userapp.User'
 
 
