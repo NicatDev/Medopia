@@ -76,17 +76,12 @@ class VerifyOTPView(GenericAPIView):
 
 
 
-class SetGenderView(generics.UpdateAPIView):
+class UserUpdateView(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = UserGenderSerializer
+    serializer_class = UserUpdateSerializer
 
     def get_object(self):
         return self.request.user
 
-class SetInterestsView(generics.UpdateAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = UserInterestsSerializer
 
-    def get_object(self):
-        return self.request.user
 

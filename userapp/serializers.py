@@ -102,18 +102,12 @@ class VerifyOTPSerializer(serializers.Serializer):
 
 #genderSerializer
 
-class UserGenderSerializer(serializers.ModelSerializer):
+class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model=User
-        fields = ['gender']
+        fields = ['gender','interests']
 
-    def update(self, instance, validated_data):
-        instance.gender = validated_data.get('gender', instance.gender)
-        instance.save()
-        return instance
 
-class UserInterestsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ['interests']
+
+
 
