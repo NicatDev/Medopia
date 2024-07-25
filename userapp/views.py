@@ -19,8 +19,9 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter
 from django.db.models import Q 
 from django.conf import settings
-
+from drf_yasg.utils import swagger_auto_schema
 #done
+
 class RegisterView(GenericAPIView):
     serializer_class = UserRegisterSerializer
 
@@ -76,12 +77,20 @@ class VerifyOTPView(GenericAPIView):
 
 
 
-class UserUpdateView(generics.UpdateAPIView):
+class UserUpdateView(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = UserUpdateSerializer
 
     def get_object(self):
         return self.request.user
 
-
+    @swagger_auto_schema(
+        responses={200: UserUpdateSerializer()},
+        request_body=UserUpdateSerializer,
+    )
+    def patch(self, request, *args, **kwargs):
+        user = self.get_object()
+        serializer = UserUpdateSerializer(user, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 

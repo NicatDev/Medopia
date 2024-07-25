@@ -103,6 +103,7 @@ class VerifyOTPSerializer(serializers.Serializer):
 #genderSerializer
 
 class UserUpdateSerializer(serializers.ModelSerializer):
+
     class Meta:
         model=User
         fields = ['gender','interests']
