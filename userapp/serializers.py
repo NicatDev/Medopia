@@ -15,7 +15,7 @@ from rest_framework_simplejwt.exceptions import TokenError
 #done
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=68, min_length=6, write_only=True)
-    password2= serializers.CharField(max_length=68, min_length=6, write_only=True)
+
 
     class Meta:
         model=User
@@ -23,10 +23,9 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         password=attrs.get('password', '')
-        password2 =attrs.get('password2', '')
-        if password !=password2:
-            raise serializers.ValidationError("Parollar uyğun gəlmir")
-         
+
+        if len(password)<3:
+            raise serializers.ValidationError("Şifrə çox qısadır!")
         return attrs
 
     def create(self, validated_data):
