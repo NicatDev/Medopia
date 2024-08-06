@@ -166,7 +166,7 @@ SIMPLE_JWT = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'medopia.az@gmail.com'
-EMAIL_HOST_PASSWORD = 'mflz jzma pqjx jlxr'
+EMAIL_HOST_PASSWORD = 'vlyq wmum wssp qoah'
 EMAIL_PORT = 587
 EMAIL_USE_TLS=True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
